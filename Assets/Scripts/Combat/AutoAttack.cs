@@ -48,7 +48,9 @@ namespace CloneGame.Player
             if (proj.TryGetComponent<Projectile>(out var p))
             {
                 Vector2 dir = (target.position - transform.position).normalized;
-                p.Init(dir, weaponData.projectileSpeed, weaponData.damage);
+                // Pass `gameObject` (the player) as the owner so the projectile
+                // never damages whoever fired it, even if it spawns overlapping them.
+                p.Init(dir, weaponData.projectileSpeed, weaponData.damage, gameObject);
             }
         }
 
