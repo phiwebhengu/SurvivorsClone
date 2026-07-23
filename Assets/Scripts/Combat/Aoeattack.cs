@@ -1,51 +1,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CloneGame.Combat;
- 
+
 namespace CloneGame.Player
 {
     /// <summary>
     /// Second weapon type: on a cooldown, deals damage to every enemy within a radius around the player. No targeting or projectiles needed.
-    /// Same upgrade pattern as AutoAttack, so the level-up UI can treat both weapons identically. 
+    /// Same upgrade pattern as AutoAttack, so the level-up UI can treat both weapons identically.
     /// </summary>
     public class AoEAttack : MonoBehaviour
     {
         [SerializeField] private AoEWeaponData weaponData;
         [SerializeField] private LayerMask enemyLayer;
- 
+
         [Header("Upgrades")]
         [SerializeField] private List<WeaponUpgrade> availableUpgrades = new();
- 
+
         // Runtime-only copies, same reasoning as AutoAttack: never mutate the shared asset.
         private float currentDamage;
         private float currentCooldown;
         private float currentRadius;
- 
+
         private const float MinCooldown = 0.05f;
         private float cooldownTimer;
- 
-        // Reused buffer to avoid allocating a new array every pulse.
-        private readonly Collider2D[] hitBuffer = new Collider2D[32];
- 
+
+        // Reused buffer/filter to avoid allocating every pulse.
+        private readonly List<Collider2D> hitBuffer = new(32);
+        private ContactFilter2D contactFilter;
+
         private void Awake()
         {
             currentDamage = weaponData.damage;
             currentCooldown = weaponData.cooldown;
             currentRadius = weaponData.radius;
+
+            contactFilter = new ContactFilter2D();
+            contactFilter.SetLayerMask(enemyLayer);
+            contactFilter.useTriggers = true; // enemies may use trigger colliders
         }
- 
+
         private void Update()
         {
             cooldownTimer -= Time.deltaTime;
             if (cooldownTimer > 0f) return;
- 
+
             Pulse();
             cooldownTimer = currentCooldown;
         }
- 
+
         private void Pulse()
         {
-            int count = Physics2D.OverlapCircleNonAlloc(transform.position, currentRadius, hitBuffer, enemyLayer);
+            int count = Physics2D.OverlapCircle(transform.position, currentRadius, contactFilter, hitBuffer);
             for (int i = 0; i < count; i++)
             {
                 if (hitBuffer[i].TryGetComponent<IDamageable>(out var damageable))
@@ -53,13 +58,14 @@ namespace CloneGame.Player
                     damageable.TakeDamage(currentDamage, this);
                 }
             }
+  
         }
- 
+
         public List<WeaponUpgrade> GetRandomUpgradeChoices(int count)
         {
             var pool = new List<WeaponUpgrade>(availableUpgrades);
             var choices = new List<WeaponUpgrade>();
- 
+
             count = Mathf.Min(count, pool.Count);
             for (int i = 0; i < count; i++)
             {
@@ -69,11 +75,11 @@ namespace CloneGame.Player
             }
             return choices;
         }
- 
+
         public void ApplyUpgrade(WeaponUpgrade upgrade)
         {
             if (upgrade == null) return;
- 
+
             switch (upgrade.type)
             {
                 case UpgradeType.DamageFlat:
@@ -89,11 +95,12 @@ namespace CloneGame.Player
                 case UpgradeType.RangeFlat:
                     currentRadius += upgrade.value;
                     break;
+             
                 default:
                     break;
             }
         }
- 
+
         private void OnDrawGizmosSelected()
         {
             if (weaponData == null) return;
