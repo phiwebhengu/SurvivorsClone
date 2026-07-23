@@ -1,0 +1,37 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UI%20Toolkit/LevelUpMenu.uss?fileID=7433441132597879392&amp;guid=0aace38e9bd7f4343a47050be307076b&amp;type=3#LevelUpMenu"/>
+
+     <ui:VisualElement name="overlay">
+
+        <ui:VisualElement name="window">
+
+            <ui:Label
+                name="title"
+                text="LEVEL UP"/>
+
+            <ui:Label
+                name="subtitle"
+                text="Choose one upgrade"/>
+
+            <ui:VisualElement
+                name="upgrade-list">
+
+                <ui:Button
+                    name="upgrade-1"
+                    text=""/>
+
+                <ui:Button
+                    name="upgrade-2"
+                    text=""/>
+
+                <ui:Button
+                    name="upgrade-3"
+                    text=""/>
+
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+
+</ui:UXML>

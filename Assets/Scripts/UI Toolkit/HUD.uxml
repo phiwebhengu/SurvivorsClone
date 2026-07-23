@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UI%20Toolkit/HUD.uss?fileID=7433441132597879392&amp;guid=0554f718daeea754f9ff5a9b29bf714a&amp;type=3#HUD"/>
+    <ui:VisualElement name="root">
+        <ui:VisualElement name="top-container">
+            <ui:ProgressBar name="xp-bar" title=""/>
+            <ui:Label name="level-label" text="Lv. 1" style="top: 0; left: 1756px;"/>
+            <ui:Label name="timer-label" text="00:00"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

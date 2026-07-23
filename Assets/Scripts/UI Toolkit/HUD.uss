@@ -1,0 +1,59 @@
+#root
+{
+    flex-grow: 1;
+}
+
+#top-container
+{
+    position: absolute;
+
+    left: 20px;
+    right: 20px;
+    top: 18px;
+
+    height: 28px;
+
+    align-items: center;
+}
+
+#xp-bar
+{
+    position: absolute;
+
+    left: 0;
+    right: 90px;
+
+    height: 18px;
+}
+
+#level-label
+{
+    position: absolute;
+
+    left: 50%;
+
+    translate: -50% 0;
+
+    color: white;
+
+    unity-font-style: bold;
+
+    font-size: 14px;
+
+    -unity-text-align: middle-center;
+}
+
+#timer-label
+{
+    position: absolute;
+
+    right: 0;
+
+    width: 70px;
+
+    color: white;
+
+    font-size: 16px;
+
+    -unity-text-align: middle-center;
+}
