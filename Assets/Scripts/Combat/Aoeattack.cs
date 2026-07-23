@@ -12,6 +12,10 @@ namespace CloneGame.Player
     {
         [SerializeField] private AoEWeaponData weaponData;
         [SerializeField] private LayerMask enemyLayer;
+        [Tooltip("If false, this weapon starts locked and disabled until Unlock() is called (e.g. from a level-up choice).")]
+        [SerializeField] private bool startsUnlocked = false;
+
+        public bool IsUnlocked { get; private set; }
 
         [Header("Upgrades")]
         [SerializeField] private List<WeaponUpgrade> availableUpgrades = new();
@@ -37,6 +41,20 @@ namespace CloneGame.Player
             contactFilter = new ContactFilter2D();
             contactFilter.SetLayerMask(enemyLayer);
             contactFilter.useTriggers = true; // enemies may use trigger colliders
+
+            IsUnlocked = startsUnlocked;
+            enabled = IsUnlocked; // disabled component means Update() never runs, no pulses fire
+        }
+
+        /// <summary>
+        /// Called when the player picks the "unlock this weapon" level-up choice.
+        /// Safe to call more than once.
+        /// </summary>
+        public void Unlock()
+        {
+            if (IsUnlocked) return;
+            IsUnlocked = true;
+            enabled = true;
         }
 
         private void Update()
@@ -58,11 +76,14 @@ namespace CloneGame.Player
                     damageable.TakeDamage(currentDamage, this);
                 }
             }
-  
+            // Hook a visual pulse effect (particle system, sprite flash, etc.) here later.
         }
 
         public List<WeaponUpgrade> GetRandomUpgradeChoices(int count)
         {
+            // Don't offer stat upgrades for a weapon the player hasn't unlocked yet.
+            if (!IsUnlocked) return new List<WeaponUpgrade>();
+
             var pool = new List<WeaponUpgrade>(availableUpgrades);
             var choices = new List<WeaponUpgrade>();
 
@@ -95,7 +116,8 @@ namespace CloneGame.Player
                 case UpgradeType.RangeFlat:
                     currentRadius += upgrade.value;
                     break;
-             
+                // ProjectileSpeedFlat has no meaning for an AoE weapon — just ignore it.
+                // Keep upgrade pools per-weapon so this case never actually gets offered.
                 default:
                     break;
             }
