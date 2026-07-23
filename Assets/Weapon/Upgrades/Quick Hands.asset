@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Quick Hands
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Combat.WeaponUpgrade
   upgradeName: Quick Hands
-  description: Describe what this upgrade does.
+  description: Reduces cooldown between attacks by 10% so weapon fires more often
   type: 2
   value: 10
