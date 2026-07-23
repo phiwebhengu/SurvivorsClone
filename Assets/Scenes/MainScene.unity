@@ -439,7 +439,11 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  availableUpgrades: []
+  availableUpgrades:
+  - {fileID: 11400000, guid: 23cf646dea3bdb54499c6b2e3db23941, type: 2}
+  - {fileID: 11400000, guid: 90f61e0ab4a8d334cb89030fa130998e, type: 2}
+  - {fileID: 11400000, guid: 575eedc192dcbfe4e994fa8e43e14ad7, type: 2}
+  - {fileID: 11400000, guid: e2901ea5634cd4f4da9d6e876eda9dc7, type: 2}
 --- !u!114 &1514855237
 MonoBehaviour:
   m_ObjectHideFlags: 0
