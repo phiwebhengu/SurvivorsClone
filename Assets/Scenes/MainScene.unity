@@ -416,6 +416,7 @@ GameObject:
   - component: {fileID: 1514855237}
   - component: {fileID: 1514855236}
   - component: {fileID: 1514855243}
+  - component: {fileID: 1514855244}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -624,6 +625,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Player.PlayerExperience
   baseXpToLevel: 10
   xpGrowthRate: 1.2
+--- !u!114 &1514855244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514855235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3b730070391e74793bbeceb32cf31b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Player.AoEAttack
+  weaponData: {fileID: 11400000, guid: 92bc48719515a6b46899a4abcb285b68, type: 2}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  availableUpgrades:
+  - {fileID: 11400000, guid: e2901ea5634cd4f4da9d6e876eda9dc7, type: 2}
+  - {fileID: 11400000, guid: 575eedc192dcbfe4e994fa8e43e14ad7, type: 2}
+  - {fileID: 11400000, guid: 90f61e0ab4a8d334cb89030fa130998e, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
