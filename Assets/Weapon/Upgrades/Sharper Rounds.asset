@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Sharper Rounds
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Combat.WeaponUpgrade
   upgradeName: Sharper Rounds
-  description: Increases weapon damage by 15%
+  description: Increases weapon damage
   type: 1
   value: 15

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Velocity Boost
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Combat.WeaponUpgrade
   upgradeName: Velocity Boost
-  description: Describe what this upgrade does.
+  description: Increases projectile's travel speed
   type: 4
   value: 3
