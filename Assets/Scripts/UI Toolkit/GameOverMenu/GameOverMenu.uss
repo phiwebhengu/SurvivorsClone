@@ -1,0 +1,59 @@
+#game-over-overlay
+{
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0,0,0,0.75);
+
+    display: none;
+}
+
+#game-over-window
+{
+    width: 420px;
+
+    padding: 24px;
+
+    background-color: rgb(40,40,55);
+
+    border-radius: 12px;
+
+    align-items: center;
+}
+
+#game-over-title
+{
+    font-size: 32px;
+
+    color: rgb(220,60,60);
+
+    -unity-font-style: bold;
+
+    -unity-text-align: middle-center;
+}
+
+#game-over-subtitle
+{
+    margin-top: 8px;
+
+    margin-bottom: 20px;
+
+    color: rgb(190,190,190);
+
+    -unity-text-align: middle-center;
+}
+
+#retry-button
+{
+    width: 160px;
+    height: 44px;
+
+    font-size: 18px;
+}

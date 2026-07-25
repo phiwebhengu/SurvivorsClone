@@ -1,0 +1,24 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UI%20Toolkit/GameOverMenu.uss"/>
+
+    <ui:VisualElement name="game-over-overlay">
+
+        <ui:VisualElement name="game-over-window">
+
+            <ui:Label
+                name="game-over-title"
+                text="YOU DIED"/>
+
+            <ui:Label
+                name="game-over-subtitle"
+                text="Better luck next run"/>
+
+            <ui:Button
+                name="retry-button"
+                text="Retry"/>
+
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+
+</ui:UXML>
