@@ -1184,6 +1184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Player.WeaponManager
   autoAttack: {fileID: 1514855236}
   aoeAttack: {fileID: 1514855244}
+  unlockAoEWeaponUpgrade: {fileID: 11400000, guid: f9769c779806c654ba74507b14a6e223, type: 2}
 --- !u!114 &1514855246
 MonoBehaviour:
   m_ObjectHideFlags: 0
