@@ -8,7 +8,8 @@ namespace CloneGame.Combat
         DamagePercent,       // +value% damage
         CooldownPercent,     // -value% cooldown (faster attacks)
         RangeFlat,           // +value targeting range
-        ProjectileSpeedFlat  // +value projectile speed
+        ProjectileSpeedFlat, // +value projectile speed
+        UnlockAoEWeapon      // special: unlocks the AoE weapon instead of modifying a stat
     }
 
     [CreateAssetMenu(fileName = "NewUpgrade", menuName = "CloneGame/Weapon Upgrade")]
