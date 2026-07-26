@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TankData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: TankEnemy
-  prefab: {fileID: 0}
+  prefab: {fileID: 8126342673329783933, guid: f482d0f6316909d418dbb2be7f3289de, type: 3}
   maxHealth: 25
   moveSpeed: 0.75
   damage: 5

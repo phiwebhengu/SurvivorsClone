@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasicData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: StarterEnemy
-  prefab: {fileID: 0}
+  prefab: {fileID: 5471567900732740969, guid: de9190b3ed80a0b4fbbb37fb4c11878b, type: 3}
   moveSpeed: 2
   damage: 1
   spawnCost: 1

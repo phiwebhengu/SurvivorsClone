@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RangedData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: RangedEnemy
-  prefab: {fileID: 0}
+  prefab: {fileID: 1247934315688350631, guid: 1a78b8b2397c220438599a7fc2bbe2cc, type: 3}
   moveSpeed: 1.5
   damage: 3
   spawnCost: 2
