@@ -1,5 +1,6 @@
 using CloneGame.Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace CloneGame.UI
@@ -22,6 +23,17 @@ namespace CloneGame.UI
 
         [SerializeField] private float gameDuration = 600f;
 
+        private VisualElement victoryOverlay;
+
+        private Label victoryTime;
+        private Label victoryLevel;
+        private Label victoryKills;
+        private Label victoryXP;
+
+        private Button restartButton;
+        private Button quitButton;
+
+
         private void Awake()
         {
             var root = GetComponent<UIDocument>().rootVisualElement;
@@ -30,7 +42,19 @@ namespace CloneGame.UI
             levelLabel = root.Q<Label>("level-label");
             timerLabel = root.Q<Label>("timer-label");
 
+            victoryOverlay = root.Q<VisualElement>("victory-overlay");
+
+            victoryTime = root.Q<Label>("time-value");
+            victoryLevel = root.Q<Label>("level-value");
+            victoryKills = root.Q<Label>("kills-value");
+            victoryXP = root.Q<Label>("xp-value");
+
+            restartButton = root.Q<Button>("restart-button");
+            quitButton = root.Q<Button>("quit-button");
+
             xpBar.title = "";
+            restartButton.clicked += RestartGame;
+            quitButton.clicked += QuitGame;
         }
 
         private void OnEnable()
@@ -61,17 +85,17 @@ namespace CloneGame.UI
 
         private void Update()
         {
+            elapsedTime += Time.deltaTime;
+
             if (elapsedTime >= gameDuration)
             {
                 elapsedTime = gameDuration;
-                timerLabel.text = "10:00";
 
-                EndGame();
+                ShowVictoryScreen();
+
                 enabled = false;
                 return;
             }
-
-            elapsedTime += Time.deltaTime;
 
             int minutes = Mathf.FloorToInt(elapsedTime / 60f);
             int seconds = Mathf.FloorToInt(elapsedTime % 60f);
@@ -90,12 +114,33 @@ namespace CloneGame.UI
             levelLabel.text = $"Lv. {level}";
         }
 
-        private void EndGame()
+        private void ShowVictoryScreen()
         {
-            Debug.Log("Game Complete!");
+            timerLabel.text = "10:00";
+
+            victoryTime.text = timerLabel.text;
+            victoryLevel.text = playerExperience.CurrentLevel.ToString();
+
+            victoryKills.text = "0";
+            victoryXP.text = playerExperience.CurrentXp.ToString("0");
+
+            victoryOverlay.RemoveFromClassList("hidden");
 
             Time.timeScale = 0f;
+        }
 
+        private void RestartGame()
+        {
+            Time.timeScale = 1f;
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        private void QuitGame()
+        {
+            Time.timeScale = 1f;
+
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
