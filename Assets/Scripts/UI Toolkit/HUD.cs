@@ -16,6 +16,12 @@ namespace CloneGame.UI
 
         private float elapsedTime;
 
+        public float ElapsedTime => elapsedTime;
+        public int Minutes => Mathf.FloorToInt(elapsedTime / 60f);
+        public int Seconds => Mathf.FloorToInt(elapsedTime % 60f);
+
+        [SerializeField] private float gameDuration = 600f;
+
         private void Awake()
         {
             var root = GetComponent<UIDocument>().rootVisualElement;
@@ -55,6 +61,16 @@ namespace CloneGame.UI
 
         private void Update()
         {
+            if (elapsedTime >= gameDuration)
+            {
+                elapsedTime = gameDuration;
+                timerLabel.text = "10:00";
+
+                EndGame();
+                enabled = false;
+                return;
+            }
+
             elapsedTime += Time.deltaTime;
 
             int minutes = Mathf.FloorToInt(elapsedTime / 60f);
@@ -72,6 +88,14 @@ namespace CloneGame.UI
         private void UpdateLevel(int level)
         {
             levelLabel.text = $"Lv. {level}";
+        }
+
+        private void EndGame()
+        {
+            Debug.Log("Game Complete!");
+
+            Time.timeScale = 0f;
+
         }
     }
 }
