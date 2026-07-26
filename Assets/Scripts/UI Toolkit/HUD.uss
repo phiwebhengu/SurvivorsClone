@@ -1,8 +1,6 @@
 #root
 {
     flex-grow: 1;
-
-    picking-mode: Ignore;
 }
 
 #top-container
@@ -38,11 +36,11 @@
 
     color: white;
 
-    -unity-font-style: bold;
+    font-style: bold;
 
     font-size: 14px;
 
-    -unity-text-align: middle-center;
+    text-align: middle-center;
 }
 
 #timer-label
@@ -57,5 +55,145 @@
 
     font-size: 16px;
 
-    -unity-text-align: middle-center;
+    text-align: middle-center;
+}
+
+.overlay
+{
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0,0,0,0.55);
+
+    width: 100%;
+    height: 100%;
+}
+
+.hidden
+{
+    display: none;
+}
+
+.panel
+{
+    width: 520px;
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    background-color: rgba(24,18,22,0.93);
+
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+
+    border-top-color: rgb(190,150,60);
+    border-bottom-color: rgb(190,150,60);
+    border-left-color: rgb(190,150,60);
+    border-right-color: rgb(190,150,60);
+
+    align-items: center;
+
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title
+{
+    font-size: 36px;
+
+    unity-font-style: bold;
+
+    color: rgb(255,212,70);
+
+    margin-bottom: 20px;
+
+    text-align: middle-center;
+}
+
+.divider
+{
+    width: 100%;
+    height: 2px;
+
+    background-color: rgb(190,150,60);
+
+    margin-bottom: 25px;
+}
+
+.stats
+{
+    width: 100%;
+
+    margin-bottom: 35px;
+}
+
+.stat-row
+{
+    flex-direction: row;
+
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+    font-size: 20px;
+
+    color: white;
+}
+
+.button-row
+{
+    flex-direction: row;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    width: 100%;
+
+    margin-top: 10px;
+}
+
+Button
+{
+    width: 180px;
+    height: 55px;
+
+    font-size: 22px;
+
+    unity-font-style: bold;
+
+    color: white;
+}
+
+#restart-button
+{
+    background-color: rgb(60,140,70);
+    color: white;
+}
+
+#restart-button:hover
+{
+    background-color: rgb(74,170,84);
+}
+
+#quit-button
+{
+    background-color: rgb(170,60,60);
+    color: white;
+}
+
+#quit-button:hover
+{
+    background-color: rgb(210,70,70);
 }

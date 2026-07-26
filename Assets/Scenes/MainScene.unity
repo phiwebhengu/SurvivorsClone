@@ -776,6 +776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.UI.HUD
   playerExperience: {fileID: 1514855243}
+  gameDuration: 600
 --- !u!1 &1234721377
 GameObject:
   m_ObjectHideFlags: 0

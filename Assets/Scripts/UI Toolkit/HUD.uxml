@@ -6,5 +6,33 @@
             <ui:Label name="level-label" text="Lv. 1" style="top: 0; left: 1756px;"/>
             <ui:Label name="timer-label" text="00:00"/>
         </ui:VisualElement>
+        <ui:VisualElement xmlns:ui="UnityEngine.UIElements" name="victory-overlay" class="overlay hidden">
+            <ui:VisualElement class="panel">
+                <ui:Label name="title" text="STAGE COMPLETED" class="title"/>
+                <ui:VisualElement class="divider"/>
+                <ui:VisualElement class="stats">
+                    <ui:VisualElement class="stat-row">
+                        <ui:Label text="Survived Time"/>
+                        <ui:Label name="time-value" text="10:00"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="stat-row">
+                        <ui:Label text="Level Reached"/>
+                        <ui:Label name="level-value" text="15"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="stat-row">
+                        <ui:Label text="Enemies Defeated"/>
+                        <ui:Label name="kills-value" text="327"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="stat-row">
+                        <ui:Label text="Experience Collected"/>
+                        <ui:Label name="xp-value" text="2387"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="button-row">
+                    <ui:Button name="restart-button" text="Play Again"/>
+                    <ui:Button name="quit-button" text="Quit"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
