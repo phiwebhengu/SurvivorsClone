@@ -1,6 +1,8 @@
 #root
 {
     flex-grow: 1;
+
+    picking-mode: Ignore;
 }
 
 #top-container
@@ -36,7 +38,7 @@
 
     color: white;
 
-    unity-font-style: bold;
+    -unity-font-style: bold;
 
     font-size: 14px;
 
