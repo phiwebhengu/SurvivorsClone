@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   enemyData: {fileID: 11400000, guid: c6facb1e539cf804b87c7e63205f90bd, type: 2}
+  gemPrefab: {fileID: 8024104544552098994, guid: 3a8c3d1bfbab18d48a17f6eb379dcb43, type: 3}
 --- !u!114 &6461815623006290668
 MonoBehaviour:
   m_ObjectHideFlags: 0
