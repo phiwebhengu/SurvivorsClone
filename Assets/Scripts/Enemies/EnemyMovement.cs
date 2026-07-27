@@ -6,6 +6,8 @@ public class EnemyMovement : MonoBehaviour
     private Enemy enemy;
     private Transform player;
 
+    public bool CanMove { get; set; } = true;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -20,10 +22,17 @@ public class EnemyMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (player == null)
+        {
             return;
+        }
 
-        Vector2 direction =
-            (player.position - transform.position).normalized;
+        if (!CanMove)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        Vector2 direction = (player.position - transform.position).normalized;
 
         rb.linearVelocity = direction * enemy.Data.MoveSpeed;
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MeleeAttackEnemy : MonoBehaviour
 {
-    [SerializeField] private float attackCooldown = 0.3f;
+    [SerializeField] private float attackCooldown = 0.2f;
 
     private Enemy enemy;
     private float cooldownTimer;
@@ -21,6 +21,8 @@ public class MeleeAttackEnemy : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        Debug.Log("Colliding with: " + collision.gameObject.name);
+
         if (cooldownTimer > 0f)
             return;
 

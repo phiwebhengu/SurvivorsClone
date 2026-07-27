@@ -17,7 +17,7 @@ public class EnemyData : ScriptableObject
     [SerializeField] private int spawnCost;
     [SerializeField] private int unlockLevel;
     [SerializeField] private int lockLevel = 999;    //player level when enemy type stop spawning
-    [SerializeField] private float spawnPercent = 1f;  //so that each of the enemies spawn at different rates
+    [SerializeField] private int spawnPercent = 1;  //so that each of the enemies spawn at different rates
 
     public string EnemyName => enemyName;
 
@@ -33,5 +33,5 @@ public class EnemyData : ScriptableObject
 
     public int LockLevel => lockLevel;
 
-    public float SpawnPercent => spawnPercent;
+    public int SpawnPercent => spawnPercent;
 }
