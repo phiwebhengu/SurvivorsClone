@@ -1,141 +1,199 @@
-#root {
+#root
+{
     flex-grow: 1;
 }
 
-#top-container {
+#top-container
+{
     position: absolute;
+
     left: 20px;
     right: 20px;
     top: 18px;
+
     height: 28px;
+
     align-items: center;
 }
 
-#xp-bar {
+#xp-bar
+{
     position: absolute;
+
     left: 0;
     right: 90px;
+
     height: 18px;
 }
 
-.unity-progress-bar__progress {
-    background-color: rgb(220, 40, 40);
-}
-
-#level-label {
+#level-label
+{
     position: absolute;
+
     left: 50%;
+
     translate: -50% 0;
+
     color: white;
-    font-style: bold;
+
+    -unity-font-style: bold;
+
     font-size: 14px;
-    text-align: middle-center;
+
+    -unity-text-align: middle-center;
 }
 
-#timer-label {
+#timer-label
+{
     position: absolute;
+
     right: 0;
+
     width: 70px;
+
     color: white;
+
     font-size: 16px;
-    text-align: middle-center;
+
+    -unity-text-align: middle-center;
 }
 
-.overlay {
+.overlay
+{
     position: absolute;
+
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
+
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.55);
+
+    background-color: rgba(0,0,0,0.55);
+
     width: 100%;
     height: 100%;
 }
 
-.hidden {
+.hidden
+{
     display: none;
 }
 
-.panel {
+.panel
+{
     width: 520px;
+
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 40px;
     padding-right: 40px;
-    background-color: rgba(24, 18, 22, 0.93);
+
+    background-color: rgba(24,18,22,0.93);
+
     border-top-width: 3px;
     border-bottom-width: 3px;
     border-left-width: 3px;
     border-right-width: 3px;
-    border-top-color: rgb(190, 150, 60);
-    border-bottom-color: rgb(190, 150, 60);
-    border-left-color: rgb(190, 150, 60);
-    border-right-color: rgb(190, 150, 60);
+
+    border-top-color: rgb(190,150,60);
+    border-bottom-color: rgb(190,150,60);
+    border-left-color: rgb(190,150,60);
+    border-right-color: rgb(190,150,60);
+
     align-items: center;
+
     flex-direction: column;
     justify-content: center;
 }
 
-.title {
+.title
+{
     font-size: 36px;
-    unity-font-style: bold;
-    color: rgb(255, 212, 70);
+
+    -unity-font-style: bold;
+
+    color: rgb(255,212,70);
+
     margin-bottom: 20px;
-    text-align: middle-center;
+
+    -unity-text-align: middle-center;
 }
 
-.divider {
+.divider
+{
     width: 100%;
     height: 2px;
-    background-color: rgb(190, 150, 60);
+
+    background-color: rgb(190,150,60);
+
     margin-bottom: 25px;
 }
 
-.stats {
+.stats
+{
     width: 100%;
+
     margin-bottom: 35px;
 }
 
-.stat-row {
+.stat-row
+{
     flex-direction: row;
+
     justify-content: space-between;
+
     margin-bottom: 12px;
+
     font-size: 20px;
+
     color: white;
 }
 
-.button-row {
+.button-row
+{
     flex-direction: row;
+
     justify-content: center;
+
     gap: 20px;
+
     width: 100%;
+
     margin-top: 10px;
 }
 
-Button {
+Button
+{
     width: 180px;
     height: 55px;
+
     font-size: 22px;
-    unity-font-style: bold;
+
+    -unity-font-style: bold;
+
     color: white;
 }
 
-#restart-button {
-    background-color: rgb(60, 140, 70);
+#restart-button
+{
+    background-color: rgb(60,140,70);
     color: white;
 }
 
-#restart-button:hover {
-    background-color: rgb(74, 170, 84);
+#restart-button:hover
+{
+    background-color: rgb(74,170,84);
 }
 
-#quit-button {
-    background-color: rgb(170, 60, 60);
+#quit-button
+{
+    background-color: rgb(170,60,60);
     color: white;
 }
 
-#quit-button:hover {
-    background-color: rgb(210, 70, 70);
+#quit-button:hover
+{
+    background-color: rgb(210,70,70);
 }
