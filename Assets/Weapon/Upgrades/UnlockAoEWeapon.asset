@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Combat.WeaponUpgrade
   upgradeName: Twin Strike
   description: 'Unlocks a second weapon: a damage pulse around you'
-  type: 0
-  value: 10
+  type: 5
+  value: 0
