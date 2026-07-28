@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: TankEnemy
   prefab: {fileID: 8126342673329783933, guid: f482d0f6316909d418dbb2be7f3289de, type: 3}
-  maxHealth: 25
-  moveSpeed: 0.75
+  moveSpeed: 0.8
   damage: 5
   spawnCost: 4
   unlockLevel: 5
   lockLevel: 10
-  spawnPercent: 0.25
+  spawnPercent: 1

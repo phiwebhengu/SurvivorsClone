@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: StarterEnemy
   prefab: {fileID: 5471567900732740969, guid: de9190b3ed80a0b4fbbb37fb4c11878b, type: 3}
-  moveSpeed: 2
-  damage: 1
+  moveSpeed: 1
+  damage: 5
   spawnCost: 1
   unlockLevel: 0
   lockLevel: 4

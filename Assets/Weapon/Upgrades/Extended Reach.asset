@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Extended Reach
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Combat.WeaponUpgrade
   upgradeName: Extended Reach
-  description: Increases targeting range letting weapon hit enemies from further
-    away
+  description: Increases targeting range, hit enemies from further away
   type: 3
   value: 1.5
