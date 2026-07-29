@@ -19,14 +19,14 @@ public class DifficultyManager : MonoBehaviour
 
     public int GetSpawnBudget(int playerLevel)
     {
-        return baseBudget + playerLevel * budgetPerLevel;
+        return (baseBudget + playerLevel * budgetPerLevel)*2;
     }
 
     public float GetSpawnInterval(int playerLevel)
     {
         return Mathf.Max(
             minimumSpawnInterval,
-            baseSpawnInterval - playerLevel * intervalReductionPerLevel);
+            baseSpawnInterval - playerLevel * intervalReductionPerLevel) * 2;
     }
 
     public List<EnemyData> GetAvailableEnemies(int playerLevel)
