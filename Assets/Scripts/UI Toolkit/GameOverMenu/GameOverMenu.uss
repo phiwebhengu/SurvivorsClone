@@ -1,59 +1,160 @@
-#game-over-overlay
+.gameover-title {
+    font-size: 38px;
+    -unity-font-style: bold;
+    color: rgb(235, 72, 72);
+    margin-bottom: 18px;
+    -unity-text-align: middle-center;
+    letter-spacing: 2px;
+}
+
+#root
+{
+    flex-grow: 1;
+}
+
+.popup-container
 {
     position: absolute;
 
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
 
     justify-content: center;
     align-items: center;
 
-    background-color: rgba(0,0,0,0.75);
+    picking-mode: position;
+}
 
+.hidden
+{
     display: none;
 }
 
-#game-over-window
-{
-    width: 420px;
+.panel {
+    width: 560px;
 
-    padding: 24px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 42px;
+    padding-right: 42px;
 
-    background-color: rgb(40,40,55);
+    background-color: rgb(18, 20, 45);
 
-    border-radius: 12px;
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-right-width: 4px;
 
+    border-top-color: rgb(229, 194, 78);
+    border-bottom-color: rgb(229, 194, 78);
+    border-left-color: rgb(229, 194, 78);
+    border-right-color: rgb(229, 194, 78);
+
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-#game-over-title
-{
-    font-size: 32px;
+.title {
+    font-size: 38px;
+    -unity-font-style: bold;
+    color: rgb(255, 223, 95);
 
-    color: rgb(220,60,60);
+    margin-bottom: 18px;
 
+    letter-spacing: 2px;
+
+    -unity-text-align: middle-center;
+}
+
+.divider {
+    width: 100%;
+    height: 3px;
+
+    margin-bottom: 28px;
+
+    background-color: rgb(229, 194, 78);
+}
+
+.stats {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.stat-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 14px;
+
+    font-size: 22px;
+
+    color: rgb(245,245,245);
+}
+
+.button-row {
+    flex-direction: row;
+    justify-content: center;
+
+    gap: 24px;
+
+    width: 100%;
+    margin-top: 8px;
+}
+
+Button {
+    width: 200px;
+    height: 58px;
+
+    font-size: 22px;
     -unity-font-style: bold;
 
-    -unity-text-align: middle-center;
+    color: white;
+
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
 }
 
-#game-over-subtitle
-{
-    margin-top: 8px;
+#retry-button {
 
-    margin-bottom: 20px;
+    background-color: rgb(42, 93, 214);
 
-    color: rgb(190,190,190);
+    border-top-color: rgb(120,180,255);
+    border-left-color: rgb(120,180,255);
 
-    -unity-text-align: middle-center;
+    border-right-color: rgb(18,46,120);
+    border-bottom-color: rgb(18,46,120);
 }
 
-#retry-button
-{
-    width: 160px;
-    height: 44px;
+#retry-button:hover {
+    background-color: rgb(63,118,235);
+}
 
-    font-size: 18px;
+#retry-button:active {
+    background-color: rgb(25,70,175);
+}
+
+
+#menu-button {
+
+    background-color: rgb(205,163,55);
+
+    border-top-color: rgb(255,225,120);
+    border-left-color: rgb(255,225,120);
+
+    border-right-color: rgb(125,92,20);
+    border-bottom-color: rgb(125,92,20);
+
+    color: rgb(35,35,35);
+}
+
+#menu-button:hover {
+    background-color: rgb(225,181,60);
+}
+
+#menu-button:active {
+    background-color: rgb(170,130,35);
 }

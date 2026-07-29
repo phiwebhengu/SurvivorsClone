@@ -49,8 +49,8 @@ namespace CloneGame.UI
             victoryKills = root.Q<Label>("kills-value");
             victoryXP = root.Q<Label>("xp-value");
 
-            restartButton = root.Q<Button>("restart-button");
-            quitButton = root.Q<Button>("quit-button");
+            restartButton = root.Q<Button>("retry-button");
+            quitButton = root.Q<Button>("menu-button");
 
             xpBar.title = "";
             restartButton.clicked += RestartGame;
