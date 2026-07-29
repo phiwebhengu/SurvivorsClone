@@ -76,8 +76,9 @@ namespace CloneGame.Player
 
         /// <summary>
         /// Called by the level-up UI to get a set of random upgrade choices to display.
-        /// Returns up to `count` upgrades with no duplicates. Safe to call with an
-        /// empty pool (returns an empty list).
+        /// Returns up to `count` upgrades with no duplicates within this single call.
+        /// The same upgrade CAN appear again in a future level-up — that's intentional,
+        /// since repeat picks scale in strength via the rank system in WeaponManager.
         /// </summary>
         public List<WeaponUpgrade> GetRandomUpgradeChoices(int count)
         {
@@ -95,29 +96,33 @@ namespace CloneGame.Player
         }
 
         /// <summary>
-        /// Called by the level-up UI once the player picks an upgrade.
+        /// Called by the level-up UI once the player picks an upgrade. `rank` is how
+        /// many times this specific upgrade has now been picked (1 = first time,
+        /// 2 = second time, etc.) — each repeat pick scales the effect proportionally,
+        /// so picking the same upgrade again is meaningfully stronger than the last time.
         /// </summary>
-        public void ApplyUpgrade(WeaponUpgrade upgrade)
+        public void ApplyUpgrade(WeaponUpgrade upgrade, int rank = 1)
         {
             if (upgrade == null) return;
+            rank = Mathf.Max(1, rank);
 
             switch (upgrade.type)
             {
                 case UpgradeType.DamageFlat:
-                    currentDamage += upgrade.value;
+                    currentDamage += upgrade.value * rank;
                     break;
                 case UpgradeType.DamagePercent:
-                    currentDamage *= 1f + (upgrade.value / 100f);
+                    currentDamage *= 1f + (upgrade.value * rank / 100f);
                     break;
                 case UpgradeType.CooldownPercent:
-                    currentCooldown *= 1f - (upgrade.value / 100f);
+                    currentCooldown *= 1f - (upgrade.value * rank / 100f);
                     currentCooldown = Mathf.Max(MinCooldown, currentCooldown);
                     break;
                 case UpgradeType.RangeFlat:
-                    currentRange += upgrade.value;
+                    currentRange += upgrade.value * rank;
                     break;
                 case UpgradeType.ProjectileSpeedFlat:
-                    currentProjectileSpeed += upgrade.value;
+                    currentProjectileSpeed += upgrade.value * rank;
                     break;
             }
         }

@@ -76,9 +76,23 @@ namespace CloneGame.Player
                     damageable.TakeDamage(currentDamage, this);
                 }
             }
-            // Hook a visual pulse effect (particle system, sprite flash, etc.) here later.
+
+            SpawnPulseVisual();
         }
 
+        private void SpawnPulseVisual()
+        {
+            GameObject vfx = new GameObject("AoEPulseVisual");
+            vfx.transform.position = transform.position;
+            vfx.transform.SetParent(transform);
+            vfx.AddComponent<AoEPulseVisual>().Init(currentRadius);
+        }
+
+        /// <summary>
+        /// Called by the level-up UI to get a set of random upgrade choices to display.
+        /// The same upgrade CAN appear again in a future level-up — that's intentional,
+        /// repeat picks scale in strength via the rank system in WeaponManager.
+        /// </summary>
         public List<WeaponUpgrade> GetRandomUpgradeChoices(int count)
         {
             // Don't offer stat upgrades for a weapon the player hasn't unlocked yet.
@@ -97,24 +111,30 @@ namespace CloneGame.Player
             return choices;
         }
 
-        public void ApplyUpgrade(WeaponUpgrade upgrade)
+        /// <summary>
+        /// `rank` is how many times this specific upgrade has now been picked
+        /// (1 = first time, 2 = second time, etc.) — scales the effect so picking
+        /// the same upgrade again is meaningfully stronger than the last time.
+        /// </summary>
+        public void ApplyUpgrade(WeaponUpgrade upgrade, int rank = 1)
         {
             if (upgrade == null) return;
+            rank = Mathf.Max(1, rank);
 
             switch (upgrade.type)
             {
                 case UpgradeType.DamageFlat:
-                    currentDamage += upgrade.value;
+                    currentDamage += upgrade.value * rank;
                     break;
                 case UpgradeType.DamagePercent:
-                    currentDamage *= 1f + (upgrade.value / 100f);
+                    currentDamage *= 1f + (upgrade.value * rank / 100f);
                     break;
                 case UpgradeType.CooldownPercent:
-                    currentCooldown *= 1f - (upgrade.value / 100f);
+                    currentCooldown *= 1f - (upgrade.value * rank / 100f);
                     currentCooldown = Mathf.Max(MinCooldown, currentCooldown);
                     break;
                 case UpgradeType.RangeFlat:
-                    currentRadius += upgrade.value;
+                    currentRadius += upgrade.value * rank;
                     break;
                 // ProjectileSpeedFlat has no meaning for an AoE weapon — just ignore it.
                 // Keep upgrade pools per-weapon so this case never actually gets offered.

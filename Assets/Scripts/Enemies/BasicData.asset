@@ -17,6 +17,6 @@ MonoBehaviour:
   moveSpeed: 1
   damage: 5
   spawnCost: 1
-  unlockLevel: 0
-  lockLevel: 4
+  unlockLevel: 1
+  lockLevel: 7
   spawnPercent: 1

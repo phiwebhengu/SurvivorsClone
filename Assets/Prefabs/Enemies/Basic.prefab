@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ba43728ac3a94d4585adf3532415a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Combat.Health
-  maxHealth: 20
+  maxHealth: 10
   invincibilityDuration: 0.5
 --- !u!50 &-6270773281335878316
 Rigidbody2D:
