@@ -15,4 +15,4 @@ MonoBehaviour:
   weaponName: AoE Weapon
   damage: 5
   cooldown: 1.5
-  radius: 2.5
+  radius: 1.5
