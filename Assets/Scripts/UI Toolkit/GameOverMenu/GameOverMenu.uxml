@@ -1,24 +1,33 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Scripts/UI%20Toolkit/GameOverMenu/GameOverMenu.uss"/>
-
-    <ui:VisualElement name="game-over-overlay">
-
-        <ui:VisualElement name="game-over-window">
-
-            <ui:Label
-                name="game-over-title"
-                text="YOU DIED"/>
-
-            <ui:Label
-                name="game-over-subtitle"
-                text="Better luck next run"/>
-
-            <ui:Button
-                name="retry-button"
-                text="Retry"/>
-
+    <Style src="project://database/Assets/Scripts/UI%20Toolkit/GameOverMenu/GameOverMenu.uss?fileID=7433441132597879392&amp;guid=30e0e6da7443cba4cb54ebe1c9862b69&amp;type=3#GameOverMenu"/>
+    <ui:VisualElement name="root">
+        <ui:VisualElement name="game-over-overlay" class="hidden popup-container">
+            <ui:VisualElement class="panel">
+                <ui:Label text="GAME OVER" class="gameover-title"/>
+                <ui:VisualElement class="divider"/>
+                <ui:VisualElement class="stats">
+                    <ui:VisualElement class="stat-row">
+                        <ui:Label text="Time Survived"/>
+                        <ui:Label name="time-value" text="00:00"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="stat-row">
+                        <ui:Label text="Level Reached"/>
+                        <ui:Label name="level-value" text="1"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="stat-row">
+                        <ui:Label text="Enemies Defeated"/>
+                        <ui:Label name="kills-value" text="0"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="stat-row">
+                        <ui:Label text="Experience"/>
+                        <ui:Label name="xp-value" text="0"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="button-row">
+                    <ui:Button name="retry-button" text="Retry"/>
+                    <ui:Button name="menu-button" text="Main Menu"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
-
     </ui:VisualElement>
-
 </ui:UXML>

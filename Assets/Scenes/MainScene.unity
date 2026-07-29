@@ -368,7 +368,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: bab1748eb40ccf042b9e5dad1f887631, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 1c4c07886f3e881428a15b99d7269ed2, type: 3}
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_Position: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
@@ -702,6 +702,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.UI.GameOverUI
   playerHealth: {fileID: 1514855238}
+  playerExperience: {fileID: 1514855243}
+  hud: {fileID: 1145604197}
 --- !u!4 &1111948100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4086872603946302015, guid: 1a78b8b2397c220438599a7fc2bbe2cc, type: 3}
