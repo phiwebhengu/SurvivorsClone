@@ -1290,7 +1290,7 @@ MonoBehaviour:
   meleeAttack: {fileID: 1514855247}
   autoAttack: {fileID: 1514855236}
   aoeAttack: {fileID: 1514855244}
-  unlockAutoAttackUpgrade: {fileID: 0}
+  unlockAutoAttackUpgrade: {fileID: 11400000, guid: dc6dd9d46b58e814f8f5cbd3b5f5acc3, type: 2}
   unlockAoEWeaponUpgrade: {fileID: 11400000, guid: f9769c779806c654ba74507b14a6e223, type: 2}
 --- !u!114 &1514855246
 MonoBehaviour:
