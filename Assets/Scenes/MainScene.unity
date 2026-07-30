@@ -1062,6 +1062,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  startsUnlocked: 0
   availableUpgrades:
   - {fileID: 11400000, guid: 23cf646dea3bdb54499c6b2e3db23941, type: 2}
   - {fileID: 11400000, guid: 90f61e0ab4a8d334cb89030fa130998e, type: 2}
@@ -1286,8 +1287,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b84e23b0bfd0c24581d6de6e8f0bd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Player.WeaponManager
+  meleeAttack: {fileID: 1514855247}
   autoAttack: {fileID: 1514855236}
   aoeAttack: {fileID: 1514855244}
+  unlockAutoAttackUpgrade: {fileID: 0}
   unlockAoEWeaponUpgrade: {fileID: 11400000, guid: f9769c779806c654ba74507b14a6e223, type: 2}
 --- !u!114 &1514855246
 MonoBehaviour:

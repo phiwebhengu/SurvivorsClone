@@ -8,6 +8,10 @@ namespace CloneGame.Player
     {
         [SerializeField] private WeaponData weaponData;
         [SerializeField] private LayerMask enemyLayer;
+        [Tooltip("If false, this weapon starts locked and disabled until Unlock() is called (e.g. from a level-up choice).")]
+        [SerializeField] private bool startsUnlocked = false;
+
+        public bool IsUnlocked { get; private set; }
 
         [Header("Upgrades")]
         [Tooltip("Pool of upgrades this weapon can offer on level up.")]
@@ -30,6 +34,20 @@ namespace CloneGame.Player
             currentCooldown = weaponData.cooldown;
             currentRange = weaponData.range;
             currentProjectileSpeed = weaponData.projectileSpeed;
+
+            IsUnlocked = startsUnlocked;
+            enabled = IsUnlocked; // disabled component means Update() never runs
+        }
+
+        /// <summary>
+        /// Called when the player picks the "unlock this weapon" level-up choice.
+        /// Safe to call more than once.
+        /// </summary>
+        public void Unlock()
+        {
+            if (IsUnlocked) return;
+            IsUnlocked = true;
+            enabled = true;
         }
 
         private void Update()
@@ -75,10 +93,8 @@ namespace CloneGame.Player
         }
 
         /// <summary>
-        /// Called by the level-up UI to get a set of random upgrade choices to display.
-        /// Returns up to `count` upgrades with no duplicates within this single call.
-        /// The same upgrade CAN appear again in a future level-up — that's intentional,
-        /// since repeat picks scale in strength via the rank system in WeaponManager.
+        /// Returns the entire available pool shuffled, no duplicates within the call.
+        /// WeaponManager handles final random selection and cross-weapon deduping.
         /// </summary>
         public List<WeaponUpgrade> GetRandomUpgradeChoices(int count)
         {
@@ -95,12 +111,6 @@ namespace CloneGame.Player
             return choices;
         }
 
-        /// <summary>
-        /// Called by the level-up UI once the player picks an upgrade. `rank` is how
-        /// many times this specific upgrade has now been picked (1 = first time,
-        /// 2 = second time, etc.) — each repeat pick scales the effect proportionally,
-        /// so picking the same upgrade again is meaningfully stronger than the last time.
-        /// </summary>
         public void ApplyUpgrade(WeaponUpgrade upgrade, int rank = 1)
         {
             if (upgrade == null) return;
