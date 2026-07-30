@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HeavyRounds
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Combat.WeaponUpgrade
   upgradeName: Heavy Rounds
-  description: Adds flat damage to your projectile, stacks with itself
+  description: Projectile damage stacks with itself
   type: 0
   value: 8
+  maxRank: 3

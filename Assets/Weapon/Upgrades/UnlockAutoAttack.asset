@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UnlockAutoAttack
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Combat.WeaponUpgrade
   upgradeName: Ranged Focus
-  description: 'Unlocks a second weapon: an auto-targeting ranged shot'
+  description: 'Weapon Unlock: an auto-targeting ranged shot'
   type: 0
   value: 0
   maxRank: 1
