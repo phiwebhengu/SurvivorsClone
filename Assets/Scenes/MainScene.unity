@@ -1038,6 +1038,7 @@ GameObject:
   - component: {fileID: 1514855244}
   - component: {fileID: 1514855246}
   - component: {fileID: 1514855245}
+  - component: {fileID: 1514855247}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1303,6 +1304,23 @@ MonoBehaviour:
   playerExperience: {fileID: 1514855243}
   weaponManager: {fileID: 1514855245}
   levelUpUI: {fileID: 724977291}
+--- !u!114 &1514855247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514855235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e91f373dec0ea4cbcaa2653e7cf327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Player.MeleeAttack
+  weaponData: {fileID: 11400000, guid: f950c61cdf44ca347b8a3e83b0653145, type: 2}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  availableUpgrades: []
 --- !u!1 &1816035249
 GameObject:
   m_ObjectHideFlags: 0
