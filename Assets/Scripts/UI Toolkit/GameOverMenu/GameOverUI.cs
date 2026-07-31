@@ -15,6 +15,7 @@ namespace CloneGame.UI
         [SerializeField] private HUD hud;
 
         private VisualElement overlay;
+        private VisualElement root;
 
         private Label timeValue;
         private Label levelValue;
@@ -26,7 +27,7 @@ namespace CloneGame.UI
 
         private void Awake()
         {
-            var root = GetComponent<UIDocument>().rootVisualElement;
+            root = GetComponent<UIDocument>().rootVisualElement;
 
             overlay = root.Q<VisualElement>("game-over-overlay");
 
@@ -39,9 +40,12 @@ namespace CloneGame.UI
             menuButton = root.Q<Button>("menu-button");
 
             if (overlay != null)
+            {
                 overlay.AddToClassList("hidden");
+                root.AddToClassList("hidden");
+            }
 
-            if (retryButton != null)
+                if (retryButton != null)
                 retryButton.clicked += Retry;
 
             if (menuButton != null)
@@ -93,6 +97,7 @@ namespace CloneGame.UI
             {
                 overlay.BringToFront();
                 overlay.RemoveFromClassList("hidden");
+                root.RemoveFromClassList("hidden");
             }
 
             Time.timeScale = 0f;
