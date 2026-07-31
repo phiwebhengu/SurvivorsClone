@@ -6,8 +6,6 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyData enemyData;
 
-    [SerializeField] private GameObject gemPrefab;
-
     private Health health;
 
     public EnemyData Data => enemyData;
@@ -38,9 +36,14 @@ public class Enemy : MonoBehaviour
 
         OnEnemyDied?.Invoke(this);
 
-        if (gemPrefab != null)
+        if (enemyData.XPGemPrefab != null)
         {
-            Instantiate(gemPrefab, transform.position, Quaternion.identity);
+            Instantiate(enemyData.XPGemPrefab, transform.position, Quaternion.identity);
+        }
+
+        if (UnityEngine.Random.value <= enemyData.HealthDropChance)
+        {
+            Instantiate(enemyData.HealthPickupPrefab, transform.position, Quaternion.identity);
         }
 
         Destroy(gameObject);

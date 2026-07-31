@@ -19,6 +19,17 @@ public class EnemyData : ScriptableObject
     [SerializeField] private int lockLevel = 999;    //player level when enemy type stop spawning
     [SerializeField] private int spawnPercent = 1;  //so that each of the enemies spawn at different rates
 
+    [Header("Drops")]
+    [SerializeField] private GameObject xpGemPrefab;
+    [SerializeField] private GameObject healthPickupPrefab;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float healthDropChance = 0.02f;
+
+    public GameObject XPGemPrefab => xpGemPrefab;
+    public GameObject HealthPickupPrefab => healthPickupPrefab;
+    public float HealthDropChance => healthDropChance;
+
     public string EnemyName => enemyName;
 
     public GameObject Prefab => prefab;
