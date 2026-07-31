@@ -24,7 +24,6 @@ namespace CloneGame.Player
             line.numCapVertices = 6;
             line.textureMode = LineTextureMode.Stretch;
 
-            // Thin at both ends, thick in the middle — reads as a single clean swipe instead of a blocky outline.
             var widthCurve = new AnimationCurve(
                 new Keyframe(0f, 0f),
                 new Keyframe(0.5f, 0.22f),
@@ -33,15 +32,27 @@ namespace CloneGame.Player
             line.widthCurve = widthCurve;
             line.widthMultiplier = 1f;
 
-            // Draw a shallow arc sweeping across the hit area, rather than tracing its literal rectangular bounds.
-            float arcHeight = size.y * 0.7f;
-            float halfLength = size.x * 0.5f;
+            float halfWidth = size.y * 0.6f;
+            float tipLength = size.x * 0.9f;
 
             for (int i = 0; i < segments; i++)
             {
                 float t = i / (float)(segments - 1);
-                float x = Mathf.Lerp(-halfLength * 0.2f, halfLength, t);
-                float y = Mathf.Sin(t * Mathf.PI) * arcHeight - arcHeight * 0.4f;
+                float x, y;
+
+                if (t <= 0.5f)
+                {
+                    float lt = t / 0.5f;
+                    x = Mathf.Sin(lt * Mathf.PI * 0.5f) * tipLength;
+                    y = Mathf.Lerp(-halfWidth, 0f, lt);
+                }
+                else
+                {
+                    float lt = (t - 0.5f) / 0.5f;
+                    x = Mathf.Cos(lt * Mathf.PI * 0.5f) * tipLength;
+                    y = Mathf.Lerp(0f, halfWidth, lt);
+                }
+
                 line.SetPosition(i, new Vector3(x, y, 0f));
             }
 
