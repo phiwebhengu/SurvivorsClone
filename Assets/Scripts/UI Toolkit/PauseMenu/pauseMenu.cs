@@ -15,6 +15,8 @@ namespace CloneGame.UI
         private Button resumeButton;
         private Button restartButton;
         private Button menuButton;
+        
+        private VisualElement root;
 
         private bool isPaused;
 
@@ -71,13 +73,14 @@ namespace CloneGame.UI
             if (document == null)
                 return;
 
-            var root = document.rootVisualElement;
+            root = document.rootVisualElement;
 
             pauseOverlay = root.Q<VisualElement>("pause-overlay");
 
             if (pauseOverlay != null)
             {
                 pauseOverlay.AddToClassList("hidden");
+                root.AddToClassList("hidden");
                 pauseOverlay.focusable = true;
             }
 
@@ -124,6 +127,7 @@ namespace CloneGame.UI
                 if (pauseOverlay != null)
                 {
                     pauseOverlay.RemoveFromClassList("hidden");
+                    root.RemoveFromClassList("hidden");
                     pauseOverlay.BringToFront();
                     pauseOverlay.Focus();
                 }
@@ -142,7 +146,12 @@ namespace CloneGame.UI
             Time.timeScale = 1f;
 
             if (pauseOverlay != null)
-                pauseOverlay.AddToClassList("hidden");
+            {   pauseOverlay.AddToClassList("hidden");
+                root.AddToClassList("hidden");
+            
+            }
+                
+                
 
             
         }
