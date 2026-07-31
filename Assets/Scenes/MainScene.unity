@@ -952,8 +952,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   spawnRadius: 10
+  despawnRadius: 30
   difficultyManager: {fileID: 1971395841}
   level: {fileID: 1514855243}
+  despawnCheckInterval: 1
 --- !u!4 &1477862367
 Transform:
   m_ObjectHideFlags: 0
