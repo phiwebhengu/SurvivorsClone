@@ -6,53 +6,79 @@ namespace CloneGame.Player
 {
     public class WeaponManager : MonoBehaviour
     {
+        [SerializeField] private MeleeAttack meleeAttack;
         [SerializeField] private AutoAttack autoAttack;
         [SerializeField] private AoEAttack aoeAttack;
 
-        [Tooltip("The special 'Unlock AoE Weapon' upgrade asset. Guaranteed to appear " +
-                 "as one of the level-up choices while the AoE weapon is still locked.")]
+        [Tooltip("Special upgrade card that unlocks the ranged auto-attack weapon.")]
+        [SerializeField] private WeaponUpgrade unlockAutoAttackUpgrade;
+        [Tooltip("Special upgrade card that unlocks the AoE pulse weapon.")]
         [SerializeField] private WeaponUpgrade unlockAoEWeaponUpgrade;
 
         // Tracks how many times each upgrade asset has been picked. Picking the same
         // upgrade again scales its effect (rank 1 = base value, rank 2 = 2x, etc.),
-        // similar to how repeat-picking the same item in Vampire Survivors levels it up.
+        // up to that upgrade's own maxRank, after which it stops being offered.
         private readonly Dictionary<WeaponUpgrade, int> upgradeRanks = new();
 
         public List<WeaponUpgrade> GetUpgradeChoices()
         {
-            var upgrades = new List<WeaponUpgrade>();
-            bool aoeLocked = aoeAttack != null && !aoeAttack.IsUnlocked;
+            var pool = new List<WeaponUpgrade>();
+            var seen = new HashSet<WeaponUpgrade>();
 
-            int remainingSlots = 3;
-
-            // Guaranteed slot: keep offering the unlock card every level-up until picked.
-            if (aoeLocked && unlockAoEWeaponUpgrade != null)
+            void AddUnique(IEnumerable<WeaponUpgrade> source)
             {
-                upgrades.Add(unlockAoEWeaponUpgrade);
-                remainingSlots--;
+                foreach (var u in source)
+                {
+                    if (u == null || seen.Contains(u) || IsMaxedOut(u)) continue;
+                    seen.Add(u);
+                    pool.Add(u);
+                }
             }
 
-            var pool = new List<WeaponUpgrade>();
-            if (autoAttack != null)
-                pool.AddRange(autoAttack.GetRandomUpgradeChoices(remainingSlots));
-            if (aoeAttack != null)
-                pool.AddRange(aoeAttack.GetRandomUpgradeChoices(remainingSlots));
+            // Melee is always active, so its upgrades are always in the running.
+            if (meleeAttack != null)
+                AddUnique(meleeAttack.GetRandomUpgradeChoices(int.MaxValue));
+
+            // Locked weapons contribute their "unlock" card to the same general pool
+            // instead of a guaranteed slot — so it competes randomly with everything
+            // else, rather than showing up (or dominating) every single level-up.
+            if (autoAttack != null && autoAttack.IsUnlocked)
+                AddUnique(autoAttack.GetRandomUpgradeChoices(int.MaxValue));
+            else if (unlockAutoAttackUpgrade != null && seen.Add(unlockAutoAttackUpgrade))
+                pool.Add(unlockAutoAttackUpgrade);
+
+            if (aoeAttack != null && aoeAttack.IsUnlocked)
+                AddUnique(aoeAttack.GetRandomUpgradeChoices(int.MaxValue));
+            else if (unlockAoEWeaponUpgrade != null && seen.Add(unlockAoEWeaponUpgrade))
+                pool.Add(unlockAoEWeaponUpgrade);
 
             Shuffle(pool);
-            for (int i = 0; i < remainingSlots && i < pool.Count; i++)
-                upgrades.Add(pool[i]);
 
-            Shuffle(upgrades); // so the unlock card isn't always shown first
-            return upgrades;
+            var choices = new List<WeaponUpgrade>();
+            for (int i = 0; i < 3 && i < pool.Count; i++)
+                choices.Add(pool[i]);
+
+            return choices;
+        }
+
+        private bool IsMaxedOut(WeaponUpgrade upgrade)
+        {
+            if (upgrade.maxRank <= 0) return false; // 0 or less = unlimited
+            int rank = upgradeRanks.TryGetValue(upgrade, out int r) ? r : 0;
+            return rank >= upgrade.maxRank;
         }
 
         public void ApplyUpgrade(WeaponUpgrade upgrade)
         {
             if (upgrade == null) return;
 
-            // Special case: this "upgrade" unlocks a whole new weapon rather than
-            // modifying a stat, so it doesn't go through rank tracking at all.
-            if (upgrade.type == UpgradeType.UnlockAoEWeapon)
+            if (upgrade == unlockAutoAttackUpgrade)
+            {
+                if (autoAttack != null) autoAttack.Unlock();
+                return;
+            }
+
+            if (upgrade == unlockAoEWeaponUpgrade)
             {
                 if (aoeAttack != null) aoeAttack.Unlock();
                 return;
@@ -61,16 +87,14 @@ namespace CloneGame.Player
             int rank = upgradeRanks.TryGetValue(upgrade, out int currentRank) ? currentRank + 1 : 1;
             upgradeRanks[upgrade] = rank;
 
-            if (autoAttack != null)
-                autoAttack.ApplyUpgrade(upgrade, rank);
-
-            if (aoeAttack != null)
-                aoeAttack.ApplyUpgrade(upgrade, rank);
+            if (meleeAttack != null) meleeAttack.ApplyUpgrade(upgrade, rank);
+            if (autoAttack != null) autoAttack.ApplyUpgrade(upgrade, rank);
+            if (aoeAttack != null) aoeAttack.ApplyUpgrade(upgrade, rank);
         }
 
         /// <summary>
         /// Current rank of a given upgrade (0 if never picked yet). Useful for UI
-        /// that wants to show "Rank 2" or preview the next tier before picking.
+        /// that wants to show "Rank 2/3" or grey out maxed-out upgrades.
         /// </summary>
         public int GetUpgradeRank(WeaponUpgrade upgrade)
         {

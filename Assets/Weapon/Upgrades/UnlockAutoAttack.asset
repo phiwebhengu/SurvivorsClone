@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d179ed6e1d4dbf46a0543d340af6b0f, type: 3}
-  m_Name: HeavyRounds
+  m_Name: UnlockAutoAttack
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Combat.WeaponUpgrade
-  upgradeName: Heavy Rounds
-  description: Projectile damage stacks with itself
+  upgradeName: Ranged Focus
+  description: 'Weapon Unlock: an auto-targeting ranged shot'
   type: 0
-  value: 8
-  maxRank: 3
+  value: 0
+  maxRank: 1

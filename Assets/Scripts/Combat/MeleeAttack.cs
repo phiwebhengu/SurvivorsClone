@@ -4,50 +4,36 @@ using CloneGame.Combat;
 
 namespace CloneGame.Player
 {
-    public class AutoAttack : MonoBehaviour
+    /// <summary>
+    /// New starting weapon: a close-range swing in whatever direction the player is currently facing — encourages the player to get close to enemies, unlike the ranged auto-attack and AoE pulse, which are now both unlocked later as upgrades.
+    /// </summary>
+    [RequireComponent(typeof(PlayerController))]
+    public class MeleeAttack : MonoBehaviour
     {
-        [SerializeField] private WeaponData weaponData;
+        [SerializeField] private MeleeWeaponData weaponData;
         [SerializeField] private LayerMask enemyLayer;
-        [Tooltip("If false, this weapon starts locked and disabled until Unlock() is called (e.g. from a level-up choice).")]
-        [SerializeField] private bool startsUnlocked = false;
-
-        public bool IsUnlocked { get; private set; }
 
         [Header("Upgrades")]
-        [Tooltip("Pool of upgrades this weapon can offer on level up.")]
         [SerializeField] private List<WeaponUpgrade> availableUpgrades = new();
 
-        // Runtime-only copies of the base stats. We never modify the WeaponData
-        // asset itself, since that would permanently change the shared asset file.
         private float currentDamage;
         private float currentCooldown;
         private float currentRange;
-        private float currentProjectileSpeed;
+        private float currentWidth;
 
         private const float MinCooldown = 0.05f;
-
         private float cooldownTimer;
+
+        private PlayerController playerController;
 
         private void Awake()
         {
+            playerController = GetComponent<PlayerController>();
+
             currentDamage = weaponData.damage;
             currentCooldown = weaponData.cooldown;
             currentRange = weaponData.range;
-            currentProjectileSpeed = weaponData.projectileSpeed;
-
-            IsUnlocked = startsUnlocked;
-            enabled = IsUnlocked; // disabled component means Update() never runs
-        }
-
-        /// <summary>
-        /// Called when the player picks the "unlock this weapon" level-up choice.
-        /// Safe to call more than once.
-        /// </summary>
-        public void Unlock()
-        {
-            if (IsUnlocked) return;
-            IsUnlocked = true;
-            enabled = true;
+            currentWidth = weaponData.width;
         }
 
         private void Update()
@@ -55,41 +41,37 @@ namespace CloneGame.Player
             cooldownTimer -= Time.deltaTime;
             if (cooldownTimer > 0f) return;
 
-            Transform target = FindNearestEnemy();
-            if (target == null) return;
-
-            Attack(target);
+            Swing();
             cooldownTimer = currentCooldown;
         }
 
-        private Transform FindNearestEnemy()
+        private void Swing()
         {
-            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, currentRange, enemyLayer);
-            Transform nearest = null;
-            float nearestDist = float.MaxValue;
+            Vector2 dir = playerController.FacingDirection;
+            if (dir.sqrMagnitude < 0.01f) dir = Vector2.down;
 
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            Vector2 center = (Vector2)transform.position + dir * (currentRange / 2f);
+            Vector2 size = new Vector2(currentRange, currentWidth);
+
+            Collider2D[] hits = Physics2D.OverlapBoxAll(center, size, angle, enemyLayer);
             foreach (var hit in hits)
             {
-                float dist = (hit.transform.position - transform.position).sqrMagnitude;
-                if (dist < nearestDist)
+                if (hit.TryGetComponent<IDamageable>(out var damageable))
                 {
-                    nearestDist = dist;
-                    nearest = hit.transform;
+                    damageable.TakeDamage(currentDamage, this);
                 }
             }
-            return nearest;
+
+            SpawnSwingVisual(center, size, angle);
         }
 
-        private void Attack(Transform target)
+        private void SpawnSwingVisual(Vector2 center, Vector2 size, float angle)
         {
-            if (weaponData.projectilePrefab == null) return;
-
-            GameObject proj = Instantiate(weaponData.projectilePrefab, transform.position, Quaternion.identity);
-            if (proj.TryGetComponent<Projectile>(out var p))
-            {
-                Vector2 dir = (target.position - transform.position).normalized;
-                p.Init(dir, currentProjectileSpeed, currentDamage, gameObject);
-            }
+            GameObject vfx = new GameObject("MeleeSwingVisual");
+            vfx.transform.position = center;
+            vfx.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+            vfx.AddComponent<MeleeSwingVisual>().Init(size);
         }
 
         /// <summary>
@@ -131,17 +113,20 @@ namespace CloneGame.Player
                 case UpgradeType.RangeFlat:
                     currentRange += upgrade.value * rank;
                     break;
-                case UpgradeType.ProjectileSpeedFlat:
-                    currentProjectileSpeed += upgrade.value * rank;
-                    break;
+                default:
+                    break; // ProjectileSpeedFlat has no meaning here
             }
         }
 
         private void OnDrawGizmosSelected()
         {
-            if (weaponData == null) return;
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, currentRange);
+            if (playerController == null || weaponData == null) return;
+            Vector2 dir = Application.isPlaying ? playerController.FacingDirection : Vector2.down;
+            float range = Application.isPlaying ? currentRange : weaponData.range;
+            float width = Application.isPlaying ? currentWidth : weaponData.width;
+            Vector2 center = (Vector2)transform.position + dir * (range / 2f);
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireCube(center, new Vector2(range, width));
         }
     }
 }

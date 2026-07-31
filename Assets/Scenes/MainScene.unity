@@ -1038,6 +1038,7 @@ GameObject:
   - component: {fileID: 1514855244}
   - component: {fileID: 1514855246}
   - component: {fileID: 1514855245}
+  - component: {fileID: 1514855247}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1061,6 +1062,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  startsUnlocked: 0
   availableUpgrades:
   - {fileID: 11400000, guid: 23cf646dea3bdb54499c6b2e3db23941, type: 2}
   - {fileID: 11400000, guid: 90f61e0ab4a8d334cb89030fa130998e, type: 2}
@@ -1285,8 +1287,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b84e23b0bfd0c24581d6de6e8f0bd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Player.WeaponManager
+  meleeAttack: {fileID: 1514855247}
   autoAttack: {fileID: 1514855236}
   aoeAttack: {fileID: 1514855244}
+  unlockAutoAttackUpgrade: {fileID: 11400000, guid: dc6dd9d46b58e814f8f5cbd3b5f5acc3, type: 2}
   unlockAoEWeaponUpgrade: {fileID: 11400000, guid: f9769c779806c654ba74507b14a6e223, type: 2}
 --- !u!114 &1514855246
 MonoBehaviour:
@@ -1303,6 +1307,23 @@ MonoBehaviour:
   playerExperience: {fileID: 1514855243}
   weaponManager: {fileID: 1514855245}
   levelUpUI: {fileID: 724977291}
+--- !u!114 &1514855247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514855235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e91f373dec0ea4cbcaa2653e7cf327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloneGame.Player.MeleeAttack
+  weaponData: {fileID: 11400000, guid: f950c61cdf44ca347b8a3e83b0653145, type: 2}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  availableUpgrades: []
 --- !u!1 &1816035249
 GameObject:
   m_ObjectHideFlags: 0
