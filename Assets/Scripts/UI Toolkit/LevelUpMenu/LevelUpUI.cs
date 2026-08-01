@@ -13,6 +13,8 @@ namespace CloneGame.UI
 
         private VisualElement overlay;
 
+        private VisualElement root;
+
         private Label title;
         private Label subtitle;
 
@@ -28,7 +30,7 @@ namespace CloneGame.UI
         {
             uiDocument = GetComponent<UIDocument>();
 
-            VisualElement root = uiDocument.rootVisualElement;
+            root = uiDocument.rootVisualElement;
 
             overlay = root.Q<VisualElement>("overlay");
 
@@ -61,6 +63,7 @@ namespace CloneGame.UI
             SetupButton(button3, 2);
 
             overlay.style.display = DisplayStyle.Flex;
+            root.style.display = DisplayStyle.Flex;
 
             Time.timeScale = 0f;
         }
@@ -94,6 +97,7 @@ namespace CloneGame.UI
         public void Hide()
         {
             overlay.style.display = DisplayStyle.None;
+            root.style.display = DisplayStyle.None;
 
             currentChoices.Clear();
 
