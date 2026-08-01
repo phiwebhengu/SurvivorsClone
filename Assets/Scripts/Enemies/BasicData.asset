@@ -15,10 +15,10 @@ MonoBehaviour:
   enemyName: StarterEnemy
   prefab: {fileID: 5471567900732740969, guid: de9190b3ed80a0b4fbbb37fb4c11878b, type: 3}
   moveSpeed: 1
-  damage: 5
+  damage: 8
   spawnCost: 1
   unlockLevel: 1
-  lockLevel: 7
+  lockLevel: 8
   spawnPercent: 1
   xpGemPrefab: {fileID: 8024104544552098994, guid: 3a8c3d1bfbab18d48a17f6eb379dcb43, type: 3}
   healthPickupPrefab: {fileID: 8917970362944588502, guid: 106e601b5d66f1948b1326f722dafbeb, type: 3}
