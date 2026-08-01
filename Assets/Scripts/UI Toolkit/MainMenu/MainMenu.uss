@@ -4,61 +4,104 @@
     align-items: center;
 }
 
-#background {
+#background
+{
     position: absolute;
+
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgb(18, 18, 18);
+
+    background-color: rgba(0,0,0,0.45);
 }
 
-#menu-container {
+#menu-container
+{
     width: 420px;
+
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 42px;
+    padding-right: 42px;
+
+    background-color: rgb(18,20,45);
+
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-right-width: 4px;
+
+    border-top-color: rgb(229,194,78);
+    border-bottom-color: rgb(229,194,78);
+    border-left-color: rgb(229,194,78);
+    border-right-color: rgb(229,194,78);
+
+    flex-direction: column;
     align-items: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-left: 40px;
-    padding-right: 40px;
-    background-color: rgba(0, 0, 0, 0.45);
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
 }
 
-#title {
-    font-size: 48px;
-    unity-font-style: bold;
-    color: white;
-    margin-bottom: 8px;
-}
+#title
+{
+    font-size: 42px;
 
-#subtitle {
-    font-size: 18px;
-    color: rgb(190, 190, 190);
-    margin-bottom: 35px;
-}
+    -unity-font-style: bold;
 
-Button {
-    width: 280px;
-    height: 48px;
+    color: rgb(255,223,95);
+
     margin-bottom: 12px;
+
+    letter-spacing: 2px;
+
+    -unity-text-align: middle-center;
+}
+
+#subtitle
+{
+    color: rgb(225,225,225);
+
     font-size: 18px;
+
+    margin-bottom: 30px;
+
+    -unity-text-align: middle-center;
+}
+
+Button
+{
+    width: 260px;
+    height: 56px;
+
+    margin-bottom: 15px;
+
+    font-size: 22px;
+
+    -unity-font-style: bold;
+
+    background-color: rgb(42,93,214);
+
     color: white;
-    background-color: rgb(60, 60, 60);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+
+    border-top-color: rgb(120,180,255);
+    border-left-color: rgb(120,180,255);
+
+    border-right-color: rgb(18,46,120);
+    border-bottom-color: rgb(18,46,120);
 }
 
-Button:hover {
-    background-color: rgb(95, 95, 95);
+Button:hover
+{
+    background-color: rgb(63,118,235);
 }
 
-Button:active {
-    background-color: rgb(120, 120, 120);
+Button:active
+{
+    background-color: rgb(25,70,175);
 }
 
 #version {
