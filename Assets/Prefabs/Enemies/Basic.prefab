@@ -88,7 +88,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.19797902, g: 0.4641509, b: 0, a: 1}
+  m_Color: {r: 0.7660377, g: 0, b: 0.1932001, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -111,7 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   enemyData: {fileID: 11400000, guid: c6facb1e539cf804b87c7e63205f90bd, type: 2}
-  gemPrefab: {fileID: 8024104544552098994, guid: 3a8c3d1bfbab18d48a17f6eb379dcb43, type: 3}
 --- !u!114 &6461815623006290668
 MonoBehaviour:
   m_ObjectHideFlags: 0
