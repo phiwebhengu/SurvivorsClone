@@ -33,6 +33,6 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Label name="timer-label" text="00:00" style="top: 16px; right: 20px;"/>
+        <ui:Label name="timer-label" text="00:00" style="top: 16px; right: 20px; font-size: 24px;"/>
     </ui:VisualElement>
 </ui:UXML>

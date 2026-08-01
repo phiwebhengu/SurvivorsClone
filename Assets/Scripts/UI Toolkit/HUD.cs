@@ -10,6 +10,7 @@ namespace CloneGame.UI
     {
         [Header("References")]
         [SerializeField] private PlayerExperience playerExperience;
+        [SerializeField] private EnemySpawner enemySpawner;
 
         private ProgressBar xpBar;
         private Label levelLabel;
@@ -116,12 +117,12 @@ namespace CloneGame.UI
 
         private void ShowVictoryScreen()
         {
-            timerLabel.text = "10:00";
+            timerLabel.text = "05:00";
 
             victoryTime.text = timerLabel.text;
             victoryLevel.text = playerExperience.CurrentLevel.ToString();
 
-            victoryKills.text = "0";
+            victoryKills.text = enemySpawner.killCount.ToString("0");
             victoryXP.text = playerExperience.CurrentXp.ToString("0");
 
             victoryOverlay.RemoveFromClassList("hidden");
