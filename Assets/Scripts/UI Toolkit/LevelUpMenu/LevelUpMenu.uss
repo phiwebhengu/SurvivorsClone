@@ -1,122 +1,63 @@
-#root
-{
-    flex-grow: 1;
-}
-
 #overlay
 {
     position: absolute;
 
     left: 0;
-    right: 0;
     top: 0;
+    right: 0;
     bottom: 0;
 
     justify-content: center;
     align-items: center;
 
-    background-color: rgba(0,0,0,0.45);
+    background-color: rgba(0,0,0,0.65);
 
     display: none;
 }
 
 #window
 {
-    width: 560px;
+    width: 520px;
 
-    padding-top: 32px;
-    padding-bottom: 32px;
-    padding-left: 42px;
-    padding-right: 42px;
+    padding: 20px;
 
-    background-color: rgb(18,20,45);
+    background-color: rgb(40,40,55);
 
-    border-top-width: 4px;
-    border-bottom-width: 4px;
-    border-left-width: 4px;
-    border-right-width: 4px;
-
-    border-top-color: rgb(229,194,78);
-    border-bottom-color: rgb(229,194,78);
-    border-left-color: rgb(229,194,78);
-    border-right-color: rgb(229,194,78);
-
-    flex-direction: column;
-    align-items: center;
+    border-radius: 12px;
 }
 
 #title
 {
-    font-size: 38px;
+    font-size: 28px;
 
-    -unity-font-style: bold;
+    color: white;
 
-    color: rgb(255,223,95);
-
-    margin-bottom: 12px;
-
-    letter-spacing: 2px;
+    unity-font-style: bold;
 
     -unity-text-align: middle-center;
 }
 
 #subtitle
 {
-    width: 100%;
+    margin-top: 8px;
 
-    margin-bottom: 28px;
+    margin-bottom: 18px;
 
-    color: rgb(225,225,225);
-
-    font-size: 18px;
+    color: rgb(190,190,190);
 
     -unity-text-align: middle-center;
 }
 
 #upgrade-list
 {
-    width: 100%;
     flex-direction: column;
 }
 
 #upgrade-list Button
 {
-    width: 100%;
-    height: 110px;
+    height: 90px;
 
-    padding-left: 16px;
-    padding-right: 16px;
-
-    margin-bottom: 16px;
+    margin-top: 10px;
 
     font-size: 18px;
-
-    -unity-font-style: bold;
-
-    color: white;
-
-    white-space: normal;
-
-    background-color: rgb(42,93,214);
-
-    border-top-width: 3px;
-    border-bottom-width: 3px;
-    border-left-width: 3px;
-    border-right-width: 3px;
-
-    border-top-color: rgb(120,180,255);
-    border-left-color: rgb(120,180,255);
-
-    border-right-color: rgb(18,46,120);
-    border-bottom-color: rgb(18,46,120);
-}
-
-#upgrade-list Button:hover
-{
-    background-color: rgb(63,118,235);
-}
-
-#upgrade-list Button:active
-{
-    background-color: rgb(25,70,175);
 }

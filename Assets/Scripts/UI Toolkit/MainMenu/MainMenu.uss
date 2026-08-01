@@ -4,109 +4,61 @@
     align-items: center;
 }
 
-#background
-{
+#background {
     position: absolute;
-
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-
-    background-color: rgba(0,0,0,0.75);
+    background-color: rgb(18, 18, 18);
 }
 
-#menu-container
-{
+#menu-container {
     width: 420px;
-
-    padding-top: 32px;
-    padding-bottom: 32px;
-    padding-left: 42px;
-    padding-right: 42px;
-
-    background-color: rgb(12,12,12);
-
-    border-top-width: 4px;
-    border-bottom-width: 4px;
-    border-left-width: 4px;
-    border-right-width: 4px;
-
-    border-top-color: rgb(229,194,78);
-    border-bottom-color: rgb(229,194,78);
-    border-left-color: rgb(229,194,78);
-    border-right-color: rgb(229,194,78);
-
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-
-    flex-direction: column;
     align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: rgba(0, 0, 0, 0.45);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
 }
 
-#title
-{
-    font-size: 42px;
-
-    font-style: bold;
-
-    color: rgb(255,230,110);
-
-    text-spacing: 2px;
-
-    margin-bottom: 12px;
-
-    text-align: middle-center;
-}
-
-#subtitle
-{
-    color: rgb(185,185,185);
-
-    font-size: 18px;
-
-    margin-bottom: 30px;
-
-    text-align: middle-center;
-}
-
-Button
-{
-    width: 260px;
-    height: 56px;
-
-    margin-bottom: 15px;
-
-    font-size: 22px;
-
-    font-style: bold;
-
-    background-color: rgb(42,93,214);
-
+#title {
+    font-size: 48px;
+    unity-font-style: bold;
     color: white;
-
-    border-top-width: 3px;
-    border-bottom-width: 3px;
-    border-left-width: 3px;
-    border-right-width: 3px;
-
-    border-top-color: rgb(120,180,255);
-    border-left-color: rgb(120,180,255);
-
-    border-right-color: rgb(18,46,120);
-    border-bottom-color: rgb(18,46,120);
+    margin-bottom: 8px;
 }
 
-Button:hover
-{
-    background-color: rgb(63,118,235);
+#subtitle {
+    font-size: 18px;
+    color: rgb(190, 190, 190);
+    margin-bottom: 35px;
 }
 
-Button:active
-{
-    background-color: rgb(25,70,175);
+Button {
+    width: 280px;
+    height: 48px;
+    margin-bottom: 12px;
+    font-size: 18px;
+    color: white;
+    background-color: rgb(60, 60, 60);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+Button:hover {
+    background-color: rgb(95, 95, 95);
+}
+
+Button:active {
+    background-color: rgb(120, 120, 120);
 }
 
 #version {
@@ -153,7 +105,7 @@ ScrollView {
 
 .upgrade-name {
     font-size: 18px;
-    font-style: bold;
+    unity-font-style: bold;
     color: white;
     margin-bottom: 5px;
 }
