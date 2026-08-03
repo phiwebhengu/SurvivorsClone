@@ -1,29 +1,30 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UI%20Toolkit/global.uss?fileID=7433441132597879392&amp;guid=89fb35151cdccd84eae51d9375457e68&amp;type=3#global"/>
     <Style src="project://database/Assets/Scripts/UI%20Toolkit/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=40e97cf9fb0b1f6408fcc4c267a16334&amp;type=3#MainMenu"/>
-    <ui:VisualElement name="root">
-        <ui:VisualElement name="background" style="top: 0; bottom: 0; right: -1px; left: 2px;"/>
-        <ui:VisualElement name="home-panel">
-            <ui:Label name="title" text="CLONE GAME"/>
-            <ui:Label name="subtitle" text="Survive for 5 Minutes"/>
+    <ui:VisualElement name="root" >
+        <ui:VisualElement name="background" class="overlay"/>
+        <ui:VisualElement name="home-panel" class="panel">
+            <ui:Label name="title" text="CLONE GAME" class="title"/>
+            <ui:Label name="subtitle" class="subtitle" text="Survive for 5 Minutes"/>
             <ui:Button name="play-button" text="Play"/>
             <ui:Button name="upgrade-button" text="Upgrades"/>
             <ui:Button name="settings-button" text="Settings"/>
             <ui:Button name="credits-button" text="Credits"/>
             <ui:Button name="quit-button" text="Quit"/>
         </ui:VisualElement>
-        <ui:VisualElement name="settings-panel" class="hidden">
+        <ui:VisualElement name="settings-panel" class="panel hidden">
             <ui:Label text="Settings" class="panel-title"/>
             <ui:Toggle name="music-toggle" label="Music"/>
             <ui:Toggle name="sfx-toggle" label="Sound Effects"/>
             <ui:Slider name="music-volume" low-value="0" high-value="100"/>
             <ui:Button name="settings-back" text="Back"/>
         </ui:VisualElement>
-        <ui:VisualElement name="upgrades-panel" class="hidden">
+        <ui:VisualElement name="upgrades-panel" class="panel hidden">
             <ui:Label text="Weapon Upgrades" class="panel-title"/>
             <ui:ScrollView name="upgrade-list"/>
             <ui:Button name="upgrade-back" text="Back"/>
         </ui:VisualElement>
-        <ui:VisualElement name="credits-panel" class="hidden">
+        <ui:VisualElement name="credits-panel" class="panel hidden">
             <ui:Label text="Credits" class="panel-title"/>
             <ui:Label text="Programming&#10;Group 11"/>
             <ui:Label text="Art&#10;Borrowed hehe"/>

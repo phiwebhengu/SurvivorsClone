@@ -1,0 +1,196 @@
+#root {
+    flex-grow: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.panel {
+    width: 520px;
+    padding: 36px;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(28, 30, 45);
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-right-width: 4px;
+    border-top-color: rgb(229, 194, 78);
+    border-right-color: rgb(229, 194, 78);
+    border-bottom-color: rgb(229, 194, 78);
+    border-left-color: rgb(229, 194, 78);
+    border-radius: 14px;
+}
+
+.title {
+    font-size: 38px;
+    -unity-font-style: bold;
+    color: rgb(255, 223, 95);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    -unity-text-align: middle-center;
+}
+
+.subtitle {
+    width: 100%;
+    margin-bottom: 28px;
+    font-size: 18px;
+    color: rgb(190, 190, 190);
+    -unity-text-align: middle-center;
+}
+
+.divider {
+    width: 100%;
+    height: 3px;
+    margin-bottom: 28px;
+    background-color: rgb(229, 194, 78);
+}
+
+Button {
+    width: 260px;
+    height: 58px;
+    margin-bottom: 16px;
+    font-size: 22px;
+    -unity-font-style: bold;
+    color: white;
+    border-radius: 8px;
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    background-color: rgb(42, 93, 214);
+    border-top-color: rgb(120, 180, 255);
+    border-left-color: rgb(120, 180, 255);
+    border-right-color: rgb(18, 46, 120);
+    border-bottom-color: rgb(18, 46, 120);
+}
+
+Button:hover {
+    background-color: rgb(63, 118, 235);
+}
+
+Button:active {
+    background-color: rgb(25, 70, 175);
+}
+
+.primary-button {
+    background-color: rgb(42, 93, 214);
+}
+
+.primary-button:hover {
+    background-color: rgb(63, 118, 235);
+}
+
+.primary-button:active {
+    background-color: rgb(25, 70, 175);
+}
+
+.success-button {
+    background-color: rgb(52, 142, 80);
+    border-top-color: rgb(125, 220, 145);
+    border-left-color: rgb(125, 220, 145);
+    border-right-color: rgb(28, 95, 50);
+    border-bottom-color: rgb(28, 95, 50);
+}
+
+.success-button:hover {
+    background-color: rgb(72, 162, 100);
+}
+
+.success-button:active {
+    background-color: rgb(38, 110, 60);
+}
+
+.warning-button {
+    background-color: rgb(205, 163, 55);
+    color: rgb(35, 35, 35);
+    border-top-color: rgb(255, 225, 120);
+    border-left-color: rgb(255, 225, 120);
+    border-right-color: rgb(125, 92, 20);
+    border-bottom-color: rgb(125, 92, 20);
+}
+
+.warning-button:hover {
+    background-color: rgb(225, 181, 60);
+}
+
+.warning-button:active {
+    background-color: rgb(170, 130, 35);
+}
+
+.danger-button {
+    background-color: rgb(185, 70, 70);
+    border-top-color: rgb(255, 145, 145);
+    border-left-color: rgb(255, 145, 145);
+    border-right-color: rgb(105, 25, 25);
+    border-bottom-color: rgb(105, 25, 25);
+}
+
+.danger-button:hover {
+    background-color: rgb(210, 85, 85);
+}
+
+.danger-button:active {
+    background-color: rgb(150, 45, 45);
+}
+
+.stats {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.stat-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 20px;
+    color: rgb(235, 235, 235);
+}
+
+.button-row {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+.upgrade-list {
+    width: 100%;
+    flex-direction: column;
+}
+
+.upgrade-list Button {
+    width: 100%;
+    height: 110px;
+    margin-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 18px;
+    white-space: normal;
+}
+
+.gameover-title {
+    color: rgb(235, 72, 72);
+}
+
+.victory-title {
+    color: rgb(110, 255, 130);
+}
+
+ScrollView
+{
+    width: 100%;
+}
