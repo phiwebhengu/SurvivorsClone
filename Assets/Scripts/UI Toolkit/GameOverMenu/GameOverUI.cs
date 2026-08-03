@@ -13,6 +13,7 @@ namespace CloneGame.UI
         [SerializeField] private Health playerHealth;
         [SerializeField] private PlayerExperience playerExperience;
         [SerializeField] private HUD hud;
+        [SerializeField] private EnemySpawner enemySpawner;
 
         private VisualElement overlay;
         private VisualElement root;
@@ -91,7 +92,7 @@ namespace CloneGame.UI
 
         
             if (killsValue != null)
-                killsValue.text = "0";
+                killsValue.text = enemySpawner.killCount.ToString("0");
 
             if (overlay != null)
             {
