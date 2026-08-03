@@ -16,7 +16,7 @@ MonoBehaviour:
   prefab: {fileID: 1247934315688350631, guid: 1a78b8b2397c220438599a7fc2bbe2cc, type: 3}
   moveSpeed: 1
   damage: 5
-  spawnCost: 5
+  spawnCost: 8
   unlockLevel: 3
   lockLevel: 99
   spawnPercent: 1

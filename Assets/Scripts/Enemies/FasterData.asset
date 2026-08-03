@@ -15,11 +15,11 @@ MonoBehaviour:
   enemyName: FastEnemy
   prefab: {fileID: 8673089626018058433, guid: 261838da3b500e24c811465474dd105e, type: 3}
   moveSpeed: 2
-  damage: 5
+  damage: 8
   spawnCost: 1
   unlockLevel: 2
   lockLevel: 999
   spawnPercent: 1
   xpGemPrefab: {fileID: 8024104544552098994, guid: 3a8c3d1bfbab18d48a17f6eb379dcb43, type: 3}
   healthPickupPrefab: {fileID: 8917970362944588502, guid: 106e601b5d66f1948b1326f722dafbeb, type: 3}
-  healthDropChance: 0.1
+  healthDropChance: 0.21

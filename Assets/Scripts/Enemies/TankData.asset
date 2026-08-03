@@ -15,11 +15,11 @@ MonoBehaviour:
   enemyName: TankEnemy
   prefab: {fileID: 8126342673329783933, guid: f482d0f6316909d418dbb2be7f3289de, type: 3}
   moveSpeed: 0.8
-  damage: 5
+  damage: 10
   spawnCost: 2
   unlockLevel: 5
   lockLevel: 999
   spawnPercent: 1
   xpGemPrefab: {fileID: 8024104544552098994, guid: 3a8c3d1bfbab18d48a17f6eb379dcb43, type: 3}
   healthPickupPrefab: {fileID: 8917970362944588502, guid: 106e601b5d66f1948b1326f722dafbeb, type: 3}
-  healthDropChance: 0.5
+  healthDropChance: 0.31
