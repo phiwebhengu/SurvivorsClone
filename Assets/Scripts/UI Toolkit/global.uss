@@ -190,7 +190,8 @@ Button:active {
     color: rgb(110, 255, 130);
 }
 
-ScrollView
-{
+ScrollView {
     width: 100%;
 }
+
+

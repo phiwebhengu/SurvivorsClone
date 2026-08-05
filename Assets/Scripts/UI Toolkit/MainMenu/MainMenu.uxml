@@ -27,8 +27,8 @@
         <ui:VisualElement name="credits-panel" class="panel hidden">
             <ui:Label text="Credits" class="panel-title"/>
             <ui:Label text="Programming&#10;Group 11"/>
-            <ui:Label text="Art&#10;Borrowed hehe"/>
-            <ui:Label text="Audio&#10;Borrowed also hehe"/>
+            <ui:Label text="Art&#10;Sven Thole"/>
+            <ui:Label text="Audio&#10;N/A"/>
             <ui:Button name="credits-back" text="Back"/>
         </ui:VisualElement>
     </ui:VisualElement>
